@@ -15,7 +15,10 @@ interface CurrencyDao {
     @Query("DELETE FROM ExchangeRatesEntity")
     suspend fun clearExchangeRates()
 
-    @Query("SELECT * FROM ExchangeRatesEntity")
+    @Query("SELECT * FROM ExchangeRatesEntity ORDER BY lastUpdatedDate DESC")
     fun getExchangeRates(): Flow<ExchangeRatesEntity>
+
+    @Query("SELECT * FROM ExchangeRatesEntity WHERE baseCurrency = :baseCurrency ORDER BY lastUpdatedDate DESC")
+    fun getExchangeRatesByBaseCurrency(baseCurrency: String): Flow<ExchangeRatesEntity>
 
 }

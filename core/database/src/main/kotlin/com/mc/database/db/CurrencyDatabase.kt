@@ -10,7 +10,7 @@ import com.mc.database.model.ExchangeRatesEntity
 
 @Database(
     entities = [ExchangeRatesEntity::class],
-    version = 1
+    version = 2
 )
 @TypeConverters(CurrencyRatesConvertor::class)
 abstract class CurrencyDatabase: RoomDatabase() {
