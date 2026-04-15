@@ -1,11 +1,14 @@
 package com.mc.database.model
 
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 import com.mc.model.currency_convertor.CurrencyInfo
 import com.mc.model.currency_convertor.ExchangeRates
 
-@Entity
+@Entity(
+    indices = [Index(value = ["baseCurrency"])]
+)
 data class ExchangeRatesEntity(
     @PrimaryKey
     val lastUpdatedDate: String,
