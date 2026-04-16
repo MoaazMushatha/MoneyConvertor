@@ -5,7 +5,7 @@ const currencyRouter = new Hono();
 interface ExchangeRateResponse {
   result: string;
   base_code: string;
-  conversion_rates: Record<string, number>;
+  rates: Record<string, number>;
   time_last_update_utc: string;
 }
 
@@ -39,7 +39,7 @@ async function fetchRates(base: string): Promise<CachedRates> {
   }
 
   const entry: CachedRates = {
-    rates: data.conversion_rates,
+    rates: data.rates,
     base: data.base_code,
     lastUpdated: data.time_last_update_utc,
     fetchedAt: Date.now(),
